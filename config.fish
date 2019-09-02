@@ -37,7 +37,9 @@ set -g theme_color_scheme dark
 fish_vi_key_bindings
 
 # DIRCOLOR for ls
-alias ls "grc.wrap ls --color=always -C"
+if type -q grc
+  alias ls "grc.wrap ls --color=always -C"
+end
 eval (dircolors -c $CONFIG_PATH/DIRCOLORS 2> /dev/null)
 ## }
 
