@@ -1,5 +1,5 @@
-# Average load
-function average_load
+# Load average
+function load_avg
   uptime | awk -F'[a-z]: ' '{ print $2 }'
 end
 
