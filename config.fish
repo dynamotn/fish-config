@@ -7,10 +7,14 @@ set -gx CONFIG_PATH (dirname (readlink -f (status --current-filename)))
 set -gx GPG_TTY (tty)
 
 # Set default editor
-command -s nvim > /dev/null
-and set -gx EDITOR nvim
+command -s nvim > /dev/null; and begin
+  set -gx EDITOR nvim
+  alias vim 'nvim'
+  alias vimdiff 'nvim -d'
+end;
 or set -gx EDITOR vim
 
+# Set pet projects location
 if test -e $HOME/.project
   set -gx PROJECT_PATHS (string split ' ' -- (sed ':a;N;$!ba;s/\n/ /g' $HOME/.project | sed "s|~|$HOME|g"))
 end
