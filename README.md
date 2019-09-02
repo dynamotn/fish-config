@@ -32,6 +32,9 @@ Alias
 | fastping | Ping with small interval |
 | openports | List all open ports |
 | listenports | List all listening ports |
+| remote_tunnel | Forward port from SSH machine to local, with `-r`, `-l` argument is port of SSH machine and local machine |
+| local_tunnel | Forward port from local to SSH machine, with `-r`, `-l` argument is port of SSH machine and local machine |
+| sock_proxy | Create socks proxy via SSH machine, with `-p` is port of socks proxy in local |
 
 #### Git short command
 | Alias | Full command |
