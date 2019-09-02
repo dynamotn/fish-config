@@ -1,5 +1,6 @@
 fishd*
 fish_*
 /completions
-/functions
+/functions/*
+!/functions/fish_greeting.fish
 /conf.d

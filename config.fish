@@ -1,3 +1,6 @@
+# Path of Fish config
+set -gx CONFIG_PATH (dirname (readlink -f (status --current-filename)))
+
 # Theme config
 set -g theme_date_format "+%a %H:%M"
 set -g theme_show_exit_status yes
