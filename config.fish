@@ -4,6 +4,11 @@ set -gx CONFIG_PATH (dirname (readlink -f (status --current-filename)))
 
 # GPG interface to insert passphrase
 set -gx GPG_TTY (tty)
+
+# Set default editor
+command -s nvim > /dev/null
+and set -gx EDITOR nvim
+or set -gx EDITOR vim
 ## }
 
 ## Theme config {
