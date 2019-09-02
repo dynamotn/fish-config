@@ -1,5 +1,6 @@
 fishd*
 fish_*
+fishfile
 /completions
 /functions/*
 !/functions/fish_greeting.fish

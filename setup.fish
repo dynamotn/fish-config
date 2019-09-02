@@ -11,5 +11,5 @@ end
 if not functions -q fisher; or eval $UPDATE
   curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
 end
-fisher
+fisher add <$SETUP_DIR/.pkg
 fisher add $SETUP_DIR/dynamo
