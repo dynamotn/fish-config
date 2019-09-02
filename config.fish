@@ -13,3 +13,8 @@ set -g fish_prompt_pwd_dir_length 0
 set -g theme_nerd_fonts yes
 set -g theme_color_scheme dark
 ## }
+
+## Fish or shell miscelaneous config {
+# Enable vi key bindings
+fish_vi_key_bindings
+## }
