@@ -6,6 +6,11 @@ set -gx CONFIG_PATH (dirname (readlink -f (status --current-filename)))
 # GPG interface to insert passphrase
 set -gx GPG_TTY (tty)
 
+# PATH
+if test -e $HOME/.local/bin
+  set -gx PATH $HOME/.local/bin $PATH
+end
+
 # Set default editor
 command -s nvim > /dev/null; and begin
   set -gx EDITOR nvim
