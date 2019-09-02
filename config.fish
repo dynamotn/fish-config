@@ -1,3 +1,4 @@
+# vim:foldmethod=marker:foldmarker={,}
 ## Some environment variables {
 # Path of Fish config
 set -gx CONFIG_PATH (dirname (readlink -f (status --current-filename)))
@@ -9,6 +10,10 @@ set -gx GPG_TTY (tty)
 command -s nvim > /dev/null
 and set -gx EDITOR nvim
 or set -gx EDITOR vim
+
+if test -e $HOME/.project
+  set -gx PROJECT_PATHS (string split ' ' -- (sed ':a;N;$!ba;s/\n/ /g' $HOME/.project | sed "s|~|$HOME|g"))
+end
 ## }
 
 ## Theme config {
