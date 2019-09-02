@@ -94,6 +94,30 @@ Alias
 |hu|`helm upgrade`|
 |hd|`helm delete`|
 
+#### docker short command
+| Alias | Full command |
+|-------|--------------|
+|d|`docker`|
+|db|`docker build`|
+|di|`docker images`|
+|dl|`docker logs -f --tail 50`|
+|dpl|`docker pull`|
+|dps|`docker ps`|
+|dr|`docker run`|
+|drm|`docker rm`|
+|drmi|`docker rmi`|
+|drs|`docker restart`|
+|dsp|`docker system prune`|
+|dw|`docker inspect`|
+|dx|`docker exec -it`|
+|c|`docker-compose`|
+|cb|`docker-compose build`|
+|cl|`docker-compose logs -f --tail 50`|
+|cpl|`docker-compose pull`|
+|crs|`docker-compose restart`|
+|cu|`docker-compose up`|
+|cx|`docker-compose exec`|
+
 License
 ========
 
