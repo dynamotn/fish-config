@@ -18,6 +18,10 @@ or set -gx EDITOR vim
 if test -e $HOME/.project
   set -gx PROJECT_PATHS (string split ' ' -- (sed ':a;N;$!ba;s/\n/ /g' $HOME/.project | sed "s|~|$HOME|g"))
 end
+
+# Fzf config
+set -U FZF_TMUX 0
+set -U FZF_COMPLETE 2
 ## }
 
 ## Theme config {
