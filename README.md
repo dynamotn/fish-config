@@ -8,6 +8,16 @@ Feature
 - Fuzzy finder in shell with `fzf`
 - Alias with command completion. See [alias section](#alias)
 
+Installation
+=============
+
+Clone this repository to ~/.config/fish and run setup.fish
+```
+rm -rf ~/.config/fish
+git clone https://gitlab.com/dynamo-config/fish ~/.config/fish
+~/.config/fish/setup.fish
+```
+
 Alias
 ======
 | Alias | Description |
@@ -67,15 +77,22 @@ Alias
 |gt|`git tag`|
 |gw|`git whatchanged`|
 
-Installation
-=============
-
-Clone this repository to ~/.config/fish and run setup.fish
-```
-rm -rf ~/.config/fish
-git clone https://gitlab.com/dynamo-config/fish ~/.config/fish
-~/.config/fish/setup.fish
-```
+#### k8s short command
+| Alias | Full command |
+|-------|--------------|
+|k|`kubectl`|
+|ka|`kubectl apply -f`|
+|kd|`kubectl delete`|
+|kdc|`kubectl describe`|
+|ke|`kubectl edit`|
+|kg|`kubectl get`|
+|kk|`kubectl apply -k`|
+|kl|`kubectl logs`|
+|klf|`kubectl logs -f --tail 50`|
+|kx|`kubectl exec -it`|
+|h|`helm`|
+|hu|`helm upgrade`|
+|hd|`helm delete`|
 
 License
 ========
