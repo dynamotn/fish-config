@@ -40,3 +40,10 @@ fish_vi_key_bindings
 alias ls "grc.wrap ls --color=always -C"
 eval (dircolors -c $CONFIG_PATH/DIRCOLORS 2> /dev/null)
 ## }
+
+## Other tools {
+# ASDF
+if test -e $HOME/.asdf/asdf.fish
+  . ~/.asdf/asdf.fish
+end
+## }
