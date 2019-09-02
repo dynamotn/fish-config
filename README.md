@@ -47,6 +47,7 @@ Alias
 |gbl|`git blame`|
 |gc|`git commit -v`|
 |gca|`gc --amend`|
+|gcan|`gc --amend --no-edit --reset-author`|
 |gcl|`git clean -df`|
 |gco|`git checkout`|
 |gcp|`git cherry-pick`|
