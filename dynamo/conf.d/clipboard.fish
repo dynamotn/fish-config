@@ -1,2 +1,2 @@
-aliasdy copy 'xsel -i -b'
-aliasdy paste 'xsel -o -b'
+alias copy 'xsel -i -b'
+alias paste 'xsel -o -b'

@@ -4,15 +4,15 @@ function load_avg
 end
 
 # Rsync
-aliasdy syncdy 'rsync --delete -avhz'
+alias syncdy 'rsync --delete -avhz'
 
 # Ping
-aliasdy shortping 'ping -c 5'
-aliasdy fastping 'ping -c 50 -i0.2'
+alias shortping 'ping -c 5'
+alias fastping 'ping -c 50 -i0.2'
 
 # Netstat
-aliasdy openports 'netstat -tuplan'
-aliasdy listenports 'netstat -tuplen'
+alias openports 'netstat -tuplan'
+alias listenports 'netstat -tuplen'
 
 # IP
 function ipwan
