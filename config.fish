@@ -10,6 +10,9 @@ set -gx GPG_TTY (tty)
 if test -e $HOME/.local/bin
   set -gx PATH $HOME/.local/bin $PATH
 end
+if test -e $CONFIG_PATH/../bin
+  set -gx PATH $CONFIG_PATH/../bin $PATH
+end
 
 # Set default editor
 command -s nvim > /dev/null; and begin
