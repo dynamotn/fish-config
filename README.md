@@ -58,7 +58,7 @@ Alias
 |gg|`git log --graph --pretty=format:...`|
 |ggs|`gg --stat`|
 |gl|`git pull`|
-|gm|`gf; git merge --ff`|
+|gm|`git merge --ff`|
 |gmc|`git merge --continue`|
 |gmt|`git mergetool`|
 |gn|`git clone --recursive`|
