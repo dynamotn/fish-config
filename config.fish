@@ -13,6 +13,9 @@ end
 if test -e $CONFIG_PATH/../bin
   set -gx PATH $CONFIG_PATH/../bin $PATH
 end
+if test -e $HOME/.fzf/bin
+  set -gx PATH $HOME/.fzf/bin $PATH
+end
 
 # Set default editor
 command -s nvim > /dev/null; and begin
@@ -27,9 +30,6 @@ if test -e $HOME/.project
   set -gx PROJECT_PATHS (string split ' ' -- (sed ':a;N;$!ba;s/\n/ /g' $HOME/.project | sed "s|~|$HOME|g"))
 end
 
-# Fzf config
-set -U FZF_TMUX 1
-set -U FZF_COMPLETE 2
 ## }
 
 ## Theme config {
@@ -52,6 +52,21 @@ eval (dircolors -c $CONFIG_PATH/DIRCOLORS 2> /dev/null)
 ## }
 
 ## Other tools {
+# Fzf config
+set -U FZF_TMUX 1
+set -U FZF_COMPLETE 2
+if type -q fdfind
+  alias fd fdfind
+end
+if type -q fd
+  set -U FZF_FIND_FILE_COMMAND "fd -Ht f -E .git . \$dir 2> /dev/null"
+  set -U FZF_CD_COMMAND "fd -t d . \$dir 2> /dev/null"
+  set -U FZF_CD_WITH_HIDDEN_COMMAND "fd -Ht d -E .git . \$dir 2> /dev/null"
+end
+if type -q bat
+  set -U FZF_PREVIEW_FILE_CMD "bat --color=always"
+end
+
 # ASDF
 if test -e $HOME/.asdf/asdf.fish
   . ~/.asdf/asdf.fish
