@@ -7,8 +7,17 @@ function grc.wrap -a executable
     set arguments
   end
 
-  set optionsvariable "grcplugin_"$executable
-  set options $$optionsvariable
+  set is_allow_grc true
+  if test $executable = 'env'; and test -n "$arguments"; or ! isatty 1
+    set is_allow_grc false
+  end
 
-  command grc -es --colour=auto $executable $options $arguments
+  set options_variable "grcplugin_"$executable
+  set options $$options_variable
+
+  if $is_allow_grc
+    command grc -es --colour=auto $executable $options $arguments
+  else
+    command $executable $options $arguments
+  end
 end

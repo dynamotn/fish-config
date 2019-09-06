@@ -28,7 +28,7 @@ if test -e $HOME/.project
 end
 
 # Fzf config
-set -U FZF_TMUX 0
+set -U FZF_TMUX 1
 set -U FZF_COMPLETE 2
 ## }
 
@@ -46,7 +46,7 @@ fish_vi_key_bindings
 
 # DIRCOLOR for ls
 if type -q grc
-  alias ls "grc.wrap ls --color=always -C"
+  set -U grcplugin_ls --color -C
 end
 eval (dircolors -c $CONFIG_PATH/DIRCOLORS 2> /dev/null)
 ## }
