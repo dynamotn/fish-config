@@ -1,6 +1,7 @@
 function __fzf_complete_preview -d 'generate preview for completion widget.
   argv[1] is the currently selected candidate in fzf
   argv[2] is a string containing the rest of the output produced by `complete -Ccmd`
+  argv[3] is the currently command that need to selected preview
   '
 
   if test "$argv[2]" = "Redefine variable"
@@ -13,6 +14,14 @@ function __fzf_complete_preview -d 'generate preview for completion widget.
 
   set -l path (string replace "~" $HOME -- $argv[1])
 
+  # if fish knows about it, let it show info
+  type -q "$path" 2>/dev/null; and type -a "$path"
+
+  # show aditional data
+  if test -n $argv[2]
+    echo $argv[2]
+  end
+
   # list directories on preview
   if test -d "$path"
     eval $FZF_PREVIEW_DIR_CMD (string escape $path)
@@ -22,10 +31,4 @@ function __fzf_complete_preview -d 'generate preview for completion widget.
   if test -f "$path"; and grep -qI . "$path"
     eval $FZF_PREVIEW_FILE_CMD (string escape $path)
   end
-
-  # if fish knows about it, let it show info
-  type -q "$path" 2>/dev/null; and type -a "$path"
-
-  # show aditional data
-  echo $argv[2]
 end

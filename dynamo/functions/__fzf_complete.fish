@@ -20,44 +20,26 @@
 
 # modified from https://github.com/junegunn/fzf/wiki/Examples-(fish)#completion
 function __fzf_complete -d 'fzf completion and print selection back to commandline'
-  # As of 2.6, fish's "complete" function does not understand
-  # subcommands. Instead, we use the same hack as __fish_complete_subcommand and
-  # extract the subcommand manually.
-  set -l cmd (commandline -co) (commandline -ct)
-
-  switch $cmd[1]
-  case env sudo
-    for i in (seq 2 (count $cmd))
-      switch $cmd[$i]
-      case '-*'
-      case '*=*'
-      case '*'
-        set cmd $cmd[$i..-1]
-        break
-      end
-    end
-  end
-
-  set -l cmd_lastw $cmd[-1]
-  set cmd (string join -- ' ' $cmd)
+  set -l cmd (__fzf_complete_command)
+  set -l cmd_last_word (string split ' ' -- $cmd)[-1]
 
   set -l initial_query ''
-  test -n "$cmd_lastw"; and set initial_query --query="$cmd_lastw"
+  test -n "$cmd_last_word"; and set initial_query --query="$cmd_last_word"
 
-  set -l complist (complete -C$cmd)
+  set -l complete_list (complete -C$cmd)
   set -l result
 
   # do nothing if there is nothing to select from
-  test -z "$complist"; and return
+  test -z "$complete_list"; and return
 
-  set -l compwc (echo $complist | wc -w)
-  if test $compwc -eq 1
+  set -l complete_list_count (echo $complete_list | wc -w)
+  if test $complete_list_count -eq 1
     # if there is only one option dont open fzf
-    set result "$complist"
+    set result "$complete_list"
   else
+
     set -l query
-    string join -- \n $complist \
-    | sort \
+    string join -- \n $complete_list \
     | eval (__fzfcmd) (string escape --no-quoted -- $initial_query) --print-query (__fzf_complete_opts) \
     | cut -f1 \
     | while read -l r
@@ -105,6 +87,28 @@ function __fzf_complete -d 'fzf completion and print selection back to commandli
   commandline -f repaint
 end
 
+function __fzf_complete_command
+  # As of 2.6, fish's "complete" function does not understand
+  # subcommands. Instead, we use the same hack as __fish_complete_subcommand and
+  # extract the subcommand manually.
+  set -l cmd (commandline -co) (commandline -ct)
+
+  switch $cmd[1]
+  case env sudo
+    for i in (seq 2 (count $cmd))
+      switch $cmd[$i]
+      case '-*'
+      case '*=*'
+      case '*'
+        set cmd $cmd[$i..-1]
+        break
+      end
+    end
+  end
+
+  echo (string join -- ' ' $cmd)
+end
+
 function __fzf_complete_opts_common
   if set -q FZF_DEFAULT_OPTS
     echo $FZF_DEFAULT_OPTS
@@ -122,10 +126,11 @@ end
 
 function __fzf_complete_opts_preview
   set -l file (status -f)
-  echo --with-nth=1 --preview-window=right:wrap --preview="fish\ '$file'\ __fzf_complete_preview\ '{1}'\ '{2..}'"
+  set -l cmd (__fzf_complete_command)
+  echo --with-nth=1 --preview-window=right:wrap --preview="fish\ '$file'\ __fzf_complete_preview\ '{1}'\ '{2..}'\ '$cmd'"
 end
 
-test "$argv[1]" = "__fzf_complete_preview"; and __fzf_complete_preview $argv[2..3]
+test "$argv[1]" = "__fzf_complete_preview"; and __fzf_complete_preview $argv[2..4]
 
 function __fzf_complete_opts_0 -d 'basic single selection with tab accept'
   __fzf_complete_opts_common
