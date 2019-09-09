@@ -4,28 +4,37 @@ function __fzf_complete_preview -d 'generate preview for completion widget.
   argv[3] is the currently command that need to selected preview
   '
 
-  if test "$argv[2]" = "Redefine variable"
-    # show environment variables current value
-    set -l evar (echo $argv[1] | cut -d= -f1)
-    echo $argv[1]$$evar
-  else
-    echo $argv[1]
-  end
-
   set -l path (string replace "~" $HOME -- $argv[1])
 
-  # if fish knows about it, let it show info
-  type -q "$path" 2>/dev/null; and type -a "$path"
+  if __fish_is_git_repository
+    if string match -qr '^[[:alpha:]]+ file$' $argv[2]
+    and test $argv[2] != 'Untracked file'
+      set -l pathfile (string escape $path)
+      eval $FZF_GIT_DIFF_FILE_CMD
+      return
+    else if string match -qr '^[[:alpha:]]+ Branch$' $argv[2]; or test $argv[2] = 'Head'
+      set -l branch $argv[1]
+      eval $FZF_GIT_LOG_CMD
+      return
+    else if string match -qr '^Commit.*$' $argv[2]; or test $argv[2] = 'Tag'
+      set -l commit $argv[1]
+      eval $FZF_GIT_SHOW_CMD
+      return
+    end
+  end
 
   # show aditional data
   if test -n $argv[2]
-    echo $argv[2]
+    echo $argv[2]\n
   end
 
   # list directories on preview
   if test -d "$path"
     eval $FZF_PREVIEW_DIR_CMD (string escape $path)
   end
+
+  # if fish knows about it, let it show info
+  type -q "$path" 2>/dev/null; and type -a "$path"
 
   # show ten lines of non-binary files preview
   if test -f "$path"; and grep -qI . "$path"

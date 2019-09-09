@@ -66,6 +66,13 @@ end
 if type -q bat
   set -U FZF_PREVIEW_FILE_CMD "bat --color=always"
 end
+if type -q diff-so-fancy
+  set -U FZF_GIT_DIFF_FILE_CMD "git diff -- \$pathfile | diff-so-fancy"
+  set -U FZF_GIT_SHOW_CMD "git show --color=always --date=relative --abbrev-commit \$commit | diff-so-fancy"
+end
+if type -q emojify
+  set -U FZF_GIT_DIFF_FILE_CMD "git diff -- \$pathfile | diff-so-fancy"
+end
 
 # ASDF
 if test -e $HOME/.asdf/asdf.fish

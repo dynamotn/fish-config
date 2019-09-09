@@ -14,7 +14,7 @@ function __fish_git_commits
     # For fish, at the time of writing, out of 12200 commits, 7 commits need 8 characters.
     # And since this takes about 1/3rd of the time that disambiguating takes...
     command git log --pretty=tformat:"%H"\t"%<(64,trunc)%s" --all --max-count=1000 2>/dev/null \
-        | string replace -r '^([0-9a-f]{10})[0-9a-f]*\t(.*)' '$1\t$2'
+        | string replace -r '^([0-9a-f]{10})[0-9a-f]*\t(.*)' '$1\tCommit: $2'
 end
 
 function __fish_git_recent_commits
@@ -49,7 +49,7 @@ function __fish_git_unique_remote_branches
 end
 
 function __fish_git_tags
-    command git tag --sort=-creatordate 2>/dev/null
+    command git tag --sort=-creatordate 2>/dev/null | xargs -I {} echo -e "{}\tTag"
 end
 
 function __fish_git_heads
@@ -57,7 +57,7 @@ function __fish_git_heads
     or return # No git dir, no need to even test.
     for head in HEAD FETCH_HEAD ORIG_HEAD MERGE_HEAD
         if test -f $gitdir/$head
-            echo $head
+            echo $head\tHead
         end
     end
 end
@@ -764,7 +764,7 @@ complete -f -c git -n "__fish_git_using_command remote; and __fish_seen_subcomma
 ### show
 complete -f -c git -n '__fish_git_needs_command' -a show -d 'Shows the last commit of a branch'
 complete -f -c git -n '__fish_git_using_command show' -a '(__fish_git_branches)'
-complete -f -c git -n '__fish_git_using_command show' -a '(__fish_git_tags)' -d 'Tag'
+complete -f -c git -n '__fish_git_using_command show' -a '(__fish_git_tags)'
 complete -f -c git -n '__fish_git_using_command show' -a '(__fish_git_commits)'
 complete -f -c git -n '__fish_git_using_command show' -l format -d 'Pretty-print the contents of the commit logs in a given format' -a '(__fish_git_show_opt format)'
 complete -f -c git -n '__fish_git_using_command show' -l abbrev-commit -d 'Show only a partial hexadecimal commit object name'
@@ -805,8 +805,8 @@ complete -f -c git -n '__fish_git_using_command add' -a '(__fish_git_files modif
 ### checkout
 complete -f -c git -n '__fish_git_needs_command' -a checkout -d 'Checkout and switch to a branch'
 complete -k -f -c git -n '__fish_git_using_command checkout; and not contains -- -- (commandline -op)' -a '(__fish_git_branches)'
-complete -k -f -c git -n '__fish_git_using_command checkout; and not contains -- -- (commandline -op)' -a '(__fish_git_heads)' -d 'Head'
-complete -k -f -c git -n '__fish_git_using_command checkout; and not contains -- -- (commandline -op)' -a '(__fish_git_tags)' -d 'Tag'
+complete -k -f -c git -n '__fish_git_using_command checkout; and not contains -- -- (commandline -op)' -a '(__fish_git_heads)'
+complete -k -f -c git -n '__fish_git_using_command checkout; and not contains -- -- (commandline -op)' -a '(__fish_git_tags)'
 complete -k -f -c git -n '__fish_git_using_command checkout; and not contains -- -- (commandline -op)' -a '(__fish_git_unique_remote_branches)' -d 'Unique Remote Branch'
 complete -k -f -c git -n '__fish_git_using_command checkout' -a '(__fish_git_files modified deleted)'
 complete -f -c git -n '__fish_git_using_command checkout' -s b -d 'Create a new branch'
@@ -1233,8 +1233,8 @@ complete -f -c git -n '__fish_git_using_command push' -l progress -d 'Force prog
 complete -f -c git -n '__fish_git_needs_command' -a rebase -d 'Forward-port local commits to the updated upstream head'
 complete -f -c git -n '__fish_git_using_command rebase' -a '(__fish_git_remotes)' -d 'Remote alias'
 complete -f -c git -n '__fish_git_using_command rebase' -a '(__fish_git_branches)'
-complete -f -c git -n '__fish_git_using_command rebase' -a '(__fish_git_heads)' -d 'Head'
-complete -f -c git -n '__fish_git_using_command rebase' -a '(__fish_git_tags)' -d 'Tag'
+complete -f -c git -n '__fish_git_using_command rebase' -a '(__fish_git_heads)'
+complete -f -c git -n '__fish_git_using_command rebase' -a '(__fish_git_tags)'
 complete -f -c git -n '__fish_git_using_command rebase' -l continue -d 'Restart the rebasing process'
 complete -f -c git -n '__fish_git_using_command rebase' -l abort -d 'Abort the rebase operation'
 complete -f -c git -n '__fish_git_using_command rebase' -l keep-empty -d "Keep the commits that don't change anything"
@@ -1304,7 +1304,7 @@ complete -f -c git -n '__fish_git_using_command tag' -s v -l verify -d 'Verify s
 complete -f -c git -n '__fish_git_using_command tag' -s f -l force -d 'Force overwriting exising tag'
 complete -f -c git -n '__fish_git_using_command tag' -s l -l list -d 'List tags'
 complete -f -c git -n '__fish_git_using_command tag' -l contains -xa '(__fish_git_commits)' -d 'List tags that contain a commit'
-complete -f -c git -n '__fish_git_using_command tag; and __fish_contains_opt -s d delete -s v verify' -a '(__fish_git_tags)' -d 'Tag'
+complete -f -c git -n '__fish_git_using_command tag; and __fish_contains_opt -s d delete -s v verify' -a '(__fish_git_tags)'
 # TODO options
 
 ### stash

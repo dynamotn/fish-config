@@ -126,7 +126,7 @@ end
 
 function __fzf_complete_opts_preview
   set -l file (status -f)
-  set -l cmd (__fzf_complete_command)
+  set -l cmd (string escape --no-quoted (__fzf_complete_command))
   echo --with-nth=1 --preview-window=right:wrap --preview="fish\ '$file'\ __fzf_complete_preview\ '{1}'\ '{2..}'\ '$cmd'"
 end
 
