@@ -39,3 +39,5 @@ alias gst 'git stash'
 alias gsu 'git submodule update --init --recursive --remote'
 alias gt 'git tag'
 alias gw 'git whatchanged'
+
+alias fgcs '__fzf_git_commit_search'
