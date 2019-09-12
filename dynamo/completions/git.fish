@@ -69,7 +69,7 @@ function __fish_git_refs
 end
 
 function __fish_git_remotes
-  command git remote 2>/dev/null
+  command git remote 2>/dev/null | xargs -I {} echo -e "{}\tRemote"
 end
 
 function __fish_git_files
@@ -623,7 +623,7 @@ complete -f -c git -l help -d 'Display the manual of a git command'
 complete -f -c git -n '__fish_git_needs_command' -l version -d 'Display version'
 complete -x -c git -n '__fish_git_needs_command' -s C -a '(__fish_complete_directories)' -d 'Run as if git was started in this directory'
 complete -x -c git -n '__fish_git_needs_command' -s c -a '(command git config -l 2>/dev/null | string replace = \t)' -d 'Set a configuration option'
-complete -x -c git -n '__fish_git_needs_command' -l exec-path -a '(__fish_git_complete_directories)' -d 'Get or set the path to the git programs'
+complete -x -c git -n '__fish_git_needs_command' -l exec-path -a '(__fish_complete_directories)' -d 'Get or set the path to the git programs'
 complete -f -c git -n '__fish_git_needs_command' -l html-path -d 'Print the path to the html documentation'
 complete -f -c git -n '__fish_git_needs_command' -l man-path -d 'Print the path to the man documentation'
 complete -f -c git -n '__fish_git_needs_command' -l info-path -d 'Print the path to the info documentation'
@@ -710,7 +710,7 @@ complete -x -c git -n '__fish_git_using_command diff log show' -l ws-error-highl
 #### fetch
 complete -f -c git -n '__fish_git_needs_command' -a fetch -d 'Download objects and refs from another repository'
 # Suggest "repository", then "refspec" - this also applies to e.g. push/pull
-complete -f -c git -n '__fish_git_using_command fetch; and not __fish_git_branch_for_remote' -a '(__fish_git_remotes)' -d 'Remote'
+complete -f -c git -n '__fish_git_using_command fetch; and not __fish_git_branch_for_remote' -a '(__fish_git_remotes)'
 complete -f -c git -n '__fish_git_using_command fetch; and __fish_git_branch_for_remote' -a '(__fish_git_branch_for_remote)'
 complete -f -c git -n '__fish_git_using_command fetch' -s q -l quiet -d 'Be quiet'
 complete -f -c git -n '__fish_git_using_command fetch' -s v -l verbose -d 'Be verbose'

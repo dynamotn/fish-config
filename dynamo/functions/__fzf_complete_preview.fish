@@ -16,6 +16,10 @@ function __fzf_complete_preview -d 'generate preview for completion widget.
       set -l branch $argv[1]
       eval $FZF_GIT_LOG_CMD
       return
+    else if test $argv[2] = 'Remote'
+      set -l remote $argv[1]
+      eval $FZF_GIT_REMOTE_URL_CMD
+      return
     else if string match -qr '^Commit.*$' $argv[2]; or test $argv[2] = 'Tag'
       set -l commit $argv[1]
       eval $FZF_GIT_SHOW_CMD
