@@ -80,6 +80,7 @@ Alias
 |gsu|`git submodule update --init --recursive --remote`|
 |gt|`git tag`|
 |gw|`git whatchanged`|
+|fgcs|Fuzzy git commit search with fzf|
 
 #### k8s short command
 | Alias | Full command |
