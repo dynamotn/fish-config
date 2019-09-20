@@ -8,6 +8,8 @@ set -q FZF_GIT_LOG_CMD; or set -U FZF_GIT_LOG_CMD "git log --graph --pretty=form
 set -q FZF_GIT_SHOW_CMD; or set -U FZF_GIT_SHOW_CMD "git show --color=always --date=relative --abbrev-commit \$commit"
 set -q FZF_GIT_COMMIT_SEARCH_COMMAND; or set -U FZF_GIT_COMMIT_SEARCH_COMMAND "git log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 set -q FZF_GIT_REMOTE_URL_CMD; or set -U FZF_GIT_REMOTE_URL_CMD "git remote get-url \$remote"
+set -q FZF_GCLOUD_PROJECT_SWITCH_COMMAND; or set -U FZF_GCLOUD_PROJECT_SWITCH_COMMAND "gcloud config set project \$project_id"
+set -q FZF_GCLOUD_PROJECT_SEARCH_COMMAND; or set -U FZF_GCLOUD_PROJECT_SEARCH_COMMAND "gcloud projects list --format='table[no-heading](projectId,name)'"
 
 function fzf_uninstall -e fzf_uninstall
     # disabled until we figure out a sensible way to ensure user overrides

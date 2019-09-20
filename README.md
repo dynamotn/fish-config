@@ -127,6 +127,12 @@ Alias
 |cu|`docker-compose up`|
 |cx|`docker-compose exec`|
 
+#### gcloud short command
+| Alias | Full command |
+|-------|--------------|
+|G|`gcloud`|
+|fGps|Fuzzy gcloud project switch with fzf|
+
 License
 ========
 
