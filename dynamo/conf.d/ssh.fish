@@ -14,7 +14,7 @@ function ssht
   end
   if not test -n "$server"
     echo "Must have hostname"
-    return
+    return 1
   end
   if test -z "$session"
     ssh -t $server tmux at; or ssh -t $server tmux new
@@ -41,15 +41,15 @@ function remote_tunnel
   end
   if not test -n "$server"
     echo "Must have hostname"
-    return
+    return 1
   end
   if not test -n "$remote_port"
     echo "Must have remote port"
-    return
+    return 1
   end
   if not test -n "$local_port"
     echo "Must have local port"
-    return
+    return 1
   end
   ssh -L $local_port:localhost:$remote_port -N -f $server
 end
@@ -72,15 +72,15 @@ function local_tunnel
   end
   if not test -n "$server"
     echo "Must have hostname"
-    return
+    return 1
   end
   if not test -n "$remote_port"
     echo "Must have remote port"
-    return
+    return 1
   end
   if not test -n "$local_port"
     echo "Must have local port"
-    return
+    return 1
   end
   ssh -R $remote_port:localhost:$local_port -N -f $server
 end
@@ -101,11 +101,11 @@ function sock_proxy
   end
   if not test -n "$server"
     echo "Must have hostname"
-    return
+    return 1
   end
   if not test -n "$port"
     echo "Must have port"
-    return
+    return 1
   end
   ssh -f -C2qTnN -D $port $server
 end

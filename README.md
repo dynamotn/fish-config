@@ -24,14 +24,18 @@ Alias
 |-------|-------------|
 | copy | Copy command output to clipboard |
 | paste | Paste clipboard to command line input |
-| thoitiet | Show current weather of current network's location |
+| weather | Show current weather of current network's location |
 | ssht | SSH to machine and run tmux on it, with `-s` argument is session name of tmux |
 | load_avg | Current load average of machine |
 | syncdy | Fast rsync command |
-| shortping | Ping with a few requests |
-| fastping | Ping with small interval |
-| openports | List all open ports |
-| listenports | List all listening ports |
+| short_ping | Ping with a few requests |
+| fast_ping | Ping with small interval |
+| open_ports | List all open ports |
+| listen_ports | List all listening ports |
+| ip_info | Get information about IP address |
+| ip_wan | Get IP WAN of network client |
+| ip_lan | Get IP LAN of network client |
+| mac_vendor | Get vendor of MAC address |
 | remote_tunnel | Forward port from SSH machine to local, with `-r`, `-l` argument is port of SSH machine and local machine |
 | local_tunnel | Forward port from local to SSH machine, with `-r`, `-l` argument is port of SSH machine and local machine |
 | sock_proxy | Create socks proxy via SSH machine, with `-p` is port of socks proxy in local |

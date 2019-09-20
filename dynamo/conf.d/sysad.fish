@@ -7,22 +7,31 @@ end
 alias syncdy 'rsync --delete -avhz'
 
 # Ping
-alias shortping 'ping -c 5'
-alias fastping 'ping -c 50 -i0.2'
+alias short_ping 'ping -c 5'
+alias fast_ping 'ping -c 50 -i0.2'
 
 # Netstat
-alias openports 'netstat -tuplan'
-alias listenports 'netstat -tuplen'
+alias open_ports 'netstat -tuplan'
+alias listen_ports 'netstat -tuplen'
 
 # IP
-function ipwan
-  if test -z "$argv"
-    curl -s http://ipinfo.io
-  else
-    curl -s http://ipinfo.io/$argv
-  end
+function ip_info
+  curl -s "http://ipinfo.io/$argv"
 end
 
-function iplan
+function ip_wan
+  dig +short myip.opendns.com @resolver1.opendns.com
+end
+
+function ip_lan
   hostname -i
+end
+
+# MAC
+function mac_vendor
+  if test -z "$argv"
+    echo "Must have MAC address"
+    return 1
+  end
+  curl -s https://api.macvendors.com/(string escape --style=url $argv)
 end
