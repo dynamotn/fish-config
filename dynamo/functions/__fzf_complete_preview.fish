@@ -6,7 +6,7 @@ function __fzf_complete_preview -d 'generate preview for completion widget.
 
   set -l path (string replace "~" $HOME -- $argv[1])
 
-  if __fish_is_git_repository
+  if __fish_is_git_repository; and test -n $argv[2]
     if string match -qr '^[[:alpha:]]+ file$' $argv[2]
     and test $argv[2] != 'Untracked file'
       set -l pathfile (string escape $path)
