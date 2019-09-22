@@ -24,6 +24,10 @@ function __fzf_complete_preview -d 'generate preview for completion widget.
       set -l commit $argv[1]
       eval $FZF_GIT_SHOW_CMD
       return
+    else if string match -qr '^Stash.*$' $argv[2]
+      set -l stash $argv[1]
+      eval $FZF_GIT_STASH_SHOW_CMD
+      return
     else if test $argv[3] = '__fzf_git_commit_search'
       set -l commit (echo $argv[1] | awk '{ print $1 }')
       eval $FZF_GIT_SHOW_CMD

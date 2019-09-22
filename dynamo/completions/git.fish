@@ -489,7 +489,7 @@ function __fish_git_stash_not_using_subcommand
 end
 
 function __fish_git_complete_stashes
-  command git stash list --format=%gd:%gs 2>/dev/null | string replace ":" \t
+  command git stash list --format="'%gd':Stash %gs" 2>/dev/null | string replace -r ":" '\t'
 end
 
 function __fish_git_aliases
