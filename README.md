@@ -131,7 +131,8 @@ Alias
 | Alias | Full command |
 |-------|--------------|
 |G|`gcloud`|
-|fGps|Fuzzy gcloud project switch with fzf|
+|fGpc|Fuzzy gcloud project change with fzf|
+|fGcis|Fuzzy gcloud compute instance search with fzf|
 
 License
 ========

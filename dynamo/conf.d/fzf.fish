@@ -11,6 +11,7 @@ set -q FZF_GIT_COMMIT_SEARCH_COMMAND; or set -U FZF_GIT_COMMIT_SEARCH_COMMAND "g
 set -q FZF_GIT_REMOTE_URL_CMD; or set -U FZF_GIT_REMOTE_URL_CMD "git remote get-url \$remote"
 set -q FZF_GCLOUD_PROJECT_SWITCH_COMMAND; or set -U FZF_GCLOUD_PROJECT_SWITCH_COMMAND "gcloud config set project \$project_id"
 set -q FZF_GCLOUD_PROJECT_SEARCH_COMMAND; or set -U FZF_GCLOUD_PROJECT_SEARCH_COMMAND "gcloud projects list --format='table[no-heading](projectId,name)'"
+set -q FZF_GCLOUD_INSTANCE_SEARCH_COMMAND; or set -U FZF_GCLOUD_INSTANCE_SEARCH_COMMAND "gcloud compute instances list | tail -n +2"
 
 function fzf_uninstall -e fzf_uninstall
     # disabled until we figure out a sensible way to ensure user overrides
