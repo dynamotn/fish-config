@@ -53,6 +53,7 @@ eval (dircolors -c $CONFIG_PATH/DIRCOLORS 2> /dev/null)
 
 ## Other tools {
 # Fzf config
+set -U FZF_DEFAULT_OPTS "--color=spinner:#31a354,info:#31a354,hl:#3182bd,hl+:#4596d1,pointer:#f0b474,prompt:#756bb1,header:#756bb1"
 set -U FZF_TMUX 1
 set -U FZF_COMPLETE 2
 set -U FZF_ENABLE_OPEN_PREVIEW 1
