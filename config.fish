@@ -42,7 +42,9 @@ set -g theme_color_scheme terminal
 
 ## Fish or shell miscelaneous config {
 # Enable vi key bindings
-fish_vi_key_bindings
+if test -n "$TERM"
+  fish_vi_key_bindings
+end
 
 # DIRCOLOR for ls
 if type -q grc
