@@ -20,6 +20,7 @@ end
 __add_folder_to_path $HOME/.local/bin
 __add_folder_to_path $CONFIG_PATH/../bin
 __add_folder_to_path $HOME/.fzf/bin
+__add_folder_to_path $HOME/.yarn/bin
 
 # Set default editor
 command -s nvim > /dev/null; and begin
