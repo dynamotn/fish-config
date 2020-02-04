@@ -7,15 +7,19 @@ set -gx CONFIG_PATH (dirname (readlink -f (status --current-filename)))
 set -gx GPG_TTY (tty)
 
 # PATH
-if test -e $HOME/.local/bin
-  set -gx PATH $HOME/.local/bin $PATH
+function __add_folder_to_path --description "Add folder to PATH"
+  if test (count $argv) -ne 1
+    echo 'Must has only one argument'
+    return 1
+  end
+  if test -e $argv[1]
+    set -gx PATH $argv[1] $PATH
+  end
 end
-if test -e $CONFIG_PATH/../bin
-  set -gx PATH $CONFIG_PATH/../bin $PATH
-end
-if test -e $HOME/.fzf/bin
-  set -gx PATH $HOME/.fzf/bin $PATH
-end
+
+__add_folder_to_path $HOME/.local/bin
+__add_folder_to_path $CONFIG_PATH/../bin
+__add_folder_to_path $HOME/.fzf/bin
 
 # Set default editor
 command -s nvim > /dev/null; and begin
