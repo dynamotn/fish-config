@@ -19,5 +19,5 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --bin
 
 # Install fish package
-fish -c fisher add <$SETUP_DIR/.pkg
-fisher add $SETUP_DIR/dynamo
+fish -c "fisher add < $SETUP_DIR/.pkg"
+fish -c "fisher add $SETUP_DIR/dynamo"
