@@ -7,3 +7,12 @@ function install_gcloud
   mkdir -p $HOME/.local
   tar xvzf /tmp/gcloud-sdk.tar.gz -C $HOME/.local; and rm -f /tmp/gcloud-sdk.tar.gz
 end
+
+function install_asdf
+  if type -q asdf; or test -e $HOME/.asdf
+    return
+  end
+
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
+  mkdir -p ~/.config/fish/completions; and cp ~/.asdf/completions/asdf.fish ~/.config/fish/completions
+end
