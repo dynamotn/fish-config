@@ -22,3 +22,14 @@ function install_kubectl
   curl -sSL https://storage.googleapis.com/kubernetes-release/release/(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl -o ~/.local/bin/kubectl
   chmod +x ~/.local/bin/kubectl
 end
+
+function install_helm
+  mkdir -p ~/.local/bin
+  set -l helmver (curl -sSL https://api.github.com/repos/helm/helm/releases/latest | grep -Po "tag_name\": \"(\K.*)(?=\",)")
+  set -l temp (mktemp)
+  curl -sSL "https://get.helm.sh/helm-$helmver-linux-amd64.tar.gz" -o $temp
+  tar xzf $temp linux-amd64/helm
+  mv linux-amd64/helm ~/.local/bin/helm
+  chmod +x ~/.local/bin/helm
+  rm -rf $temp linux-amd64
+end
