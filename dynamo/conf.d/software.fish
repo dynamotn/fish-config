@@ -16,3 +16,9 @@ function install_asdf
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
   mkdir -p ~/.config/fish/completions; and cp ~/.asdf/completions/asdf.fish ~/.config/fish/completions
 end
+
+function install_kubectl
+  mkdir -p ~/.local/bin
+  curl -sSL https://storage.googleapis.com/kubernetes-release/release/(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl -o ~/.local/bin/kubectl
+  chmod +x ~/.local/bin/kubectl
+end
