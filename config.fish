@@ -16,12 +16,24 @@ function __add_folder_to_path --description "Add folder to PATH"
     set -gx PATH $argv[1] $PATH
   end
 end
+function __add_folder_to_manpath --description "Add folder to MANPATH"
+  if test (count $argv) -ne 1
+    echo 'Must has only one argument'
+    return 1
+  end
+  if test -e $argv[1]
+    set -gx MANPATH $argv[1] $MANPATH
+  end
+end
 
 __add_folder_to_path $HOME/.local/bin
 __add_folder_to_path $CONFIG_PATH/../bin
 __add_folder_to_path $HOME/.fzf/bin
 __add_folder_to_path $HOME/.yarn/bin
 __add_folder_to_path $HOME/.local/google-cloud-sdk/bin
+
+set -gx MANPATH (manpath -g)
+__add_folder_to_manpath $HOME/.local/man
 
 # Set default editor
 command -s nvim > /dev/null; and begin
