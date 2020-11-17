@@ -56,3 +56,9 @@ function install_fzf
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
   ~/.fzf/install --no-zsh --all
 end
+
+function install_cht
+  mkdir -p ~/.local/bin
+  curl -sSL https://cht.sh/:cht.sh -o ~/.local/bin/cht
+  chmod +x ~/.local/bin/cht
+end
