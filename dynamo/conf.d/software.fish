@@ -47,3 +47,12 @@ function install_terraform
   cd ~/.local/bin; and unzip -qqo $temp
   rm -rf $temp; and cd $pwd
 end
+
+function install_fzf
+  if test -e ~/.fzf
+    return
+  end
+
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install --no-zsh --all
+end
