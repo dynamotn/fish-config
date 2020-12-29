@@ -89,9 +89,9 @@ end
 if type -q bat
   set -U FZF_PREVIEW_FILE_CMD "bat --color=always"
 end
-if type -q diff-so-fancy
-  set -U FZF_GIT_DIFF_FILE_CMD "git diff -- \$pathfile | diff-so-fancy"
-  set -U FZF_GIT_SHOW_CMD "git show --color=always --date=relative --abbrev-commit \$commit | diff-so-fancy"
+if type -q delta
+  set -U FZF_GIT_DIFF_FILE_CMD "git diff -- \$pathfile | delta"
+  set -U FZF_GIT_SHOW_CMD "git show --color=always --date=relative --abbrev-commit \$commit | delta"
 end
 if type -q emojify
   set -U FZF_GIT_LOG_CMD "git log --graph --pretty=format:'%C(bold)%h%Creset%C(magenta)%d%Creset %s %C(yellow)<%an> %C(cyan)(%cr)%Creset' --abbrev-commit --date=relative --color=always \$branch | emojify"
