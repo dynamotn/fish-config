@@ -15,8 +15,8 @@ if not functions -q fisher; or eval $UPDATE
 end
 
 # Install fish package
-fish -c "fisher add < $SETUP_DIR/.pkg"
-fish -c "fisher add $SETUP_DIR/dynamo"
+fish -c "fisher install < $SETUP_DIR/.pkg"
+fish -c "fisher install $SETUP_DIR/dynamo"
 
 # Install fzf
 fish -c "install_fzf"
