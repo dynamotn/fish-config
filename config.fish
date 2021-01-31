@@ -47,7 +47,6 @@ or set -gx EDITOR vim
 if test -e $HOME/.project
   set -gx PROJECT_PATHS (string split ' ' -- (sed ':a;N;$!ba;s/\n/ /g' $HOME/.project | sed "s|~|$HOME|g"))
 end
-
 ## }
 
 ## Theme & Plugin config {
@@ -103,5 +102,11 @@ end
 # ASDF
 if test -e $HOME/.asdf/asdf.fish
   . ~/.asdf/asdf.fish
+end
+## }
+
+## Load per-machine config {
+if test -e $HOME/.config/fish/secret.fish
+  source $HOME/.config/fish/secret.fish
 end
 ## }
