@@ -42,11 +42,6 @@ command -s nvim > /dev/null; and begin
   alias vimdiff 'nvim -d'
 end;
 or set -gx EDITOR vim
-
-# Set pet projects location
-if test -e $HOME/.project
-  set -gx PROJECT_PATHS (string split ' ' -- (sed ':a;N;$!ba;s/\n/ /g' $HOME/.project | sed "s|~|$HOME|g"))
-end
 ## }
 
 ## Theme & Plugin config {
