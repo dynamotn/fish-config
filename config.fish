@@ -73,6 +73,7 @@ if test $TERM = "linux"
   for i in (sed -n "s/.*\*color\([0-9]\{1,\}\).*#\([0-9a-fA-F]\{6\}\).*/\1 \2/p" $HOME/.Xresources | awk '$1 < 16 {printf "\\\e]P%X%s", $1, $2}')
     echo -en "$i"
   end
+  set -g theme_nerd_fonts no
 end
 ## }
 
