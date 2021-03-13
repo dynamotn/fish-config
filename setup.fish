@@ -14,9 +14,11 @@ if not functions -q fisher; or eval $UPDATE
   curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
 end
 
+source ~/.config/fish/functions/fisher.fish
+
 # Install fish package
-fish -c "fisher install < $SETUP_DIR/.pkg"
-fish -c "fisher install $SETUP_DIR/dynamo"
+fisher install < $SETUP_DIR/.pkg
+fisher install $SETUP_DIR/dynamo
 
 # Install fzf
 fish -c "install_fzf"
