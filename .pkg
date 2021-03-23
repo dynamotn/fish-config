@@ -1,7 +1,7 @@
 oh-my-fish/plugin-bang-bang
 jorgebucaran/fish-getopts
 danhper/fish-ssh-agent
-dynamo-make-color/fish-pj
-dynamo-make-color/fish-fzf
-dynamo-make-color/fish-canaudua
-dynamo-make-color/fish-t
+gitlab.com/dynamo-config/fish-packages/pj
+gitlab.com/dynamo-config/fish-packages/fzf
+gitlab.com/dynamo-config/fish-packages/canaudua
+gitlab.com/dynamo-config/fish-packages/t
