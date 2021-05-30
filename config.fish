@@ -37,12 +37,17 @@ set -gx MANPATH (manpath -g)
 __add_folder_to_manpath $HOME/.local/man
 
 # Set default editor
+abbr -a v vim
 command -s nvim > /dev/null; and begin
   set -gx EDITOR nvim
   alias vim 'nvim'
   alias vimdiff 'nvim -d'
-end;
-or set -gx EDITOR vim
+  set -gx MANPAGER 'nvim +Man!'
+end
+or begin
+  set -gx EDITOR vim
+  set -gx MANPAGER 'vim -M +MANPAGER -'
+end
 ## }
 
 ## Theme & Plugin config {
