@@ -84,6 +84,7 @@ end
 
 ## Other tools {
 # Fzf config
+type -q __fzf_setup; and __fzf_setup
 set -U FZF_DEFAULT_OPTS "--color=spinner:#31a354,info:#31a354,hl:#3182bd,hl+:#4596d1,pointer:#f0b474,prompt:#756bb1,header:#756bb1 --cycle --layout=reverse --preview-window=wrap --marker=\"*\" --prompt=\" \" --pointer=\"=>\""
 set -U FZF_TMUX 1
 if type -q fdfind

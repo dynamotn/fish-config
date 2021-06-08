@@ -23,3 +23,4 @@ fisher install $SETUP_DIR/dynamo
 
 # Install fzf
 fish -c "install_fzf"
+fish -c "install_nix"
