@@ -99,6 +99,9 @@ end
 if test -e $HOME/.asdf/asdf.fish
   . ~/.asdf/asdf.fish
 end
+
+# Direnv
+type -q direnv; and direnv hook fish | source
 ## }
 
 ## Load per-machine config {
