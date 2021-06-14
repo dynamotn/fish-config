@@ -62,3 +62,7 @@ function install_cht
   curl -sSL https://cht.sh/:cht.sh -o ~/.local/bin/cht
   chmod +x ~/.local/bin/cht
 end
+
+function install_nix
+  curl -sSL https://nixos.org/nix/install | sh
+end
