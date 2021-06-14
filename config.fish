@@ -6,6 +6,9 @@ set -gx CONFIG_PATH (dirname (readlink -f (status --current-filename)))
 # GPG interface to insert passphrase
 set -gx GPG_TTY (tty)
 
+# GO workspace
+set -gx GOPATH $HOME/.go
+
 # PATH
 function __add_folder_to_path --description "Add folder to PATH"
   if test (count $argv) -ne 1
@@ -31,6 +34,7 @@ __add_folder_to_path $CONFIG_PATH/../bin
 __add_folder_to_path $HOME/.fzf/bin
 __add_folder_to_path $HOME/.yarn/bin
 __add_folder_to_path $HOME/.cargo/bin
+__add_folder_to_path $HOME/.go/bin
 __add_folder_to_path $HOME/.local/google-cloud-sdk/bin
 
 set -gx MANPATH (manpath -g)
