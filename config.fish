@@ -30,7 +30,7 @@ function __add_folder_to_manpath --description "Add folder to MANPATH"
 end
 
 __add_folder_to_path $HOME/.local/bin
-__add_folder_to_path $CONFIG_PATH/../bin
+__add_folder_to_path $CONFIG_PATH/../scripts/bin
 __add_folder_to_path $HOME/.fzf/bin
 __add_folder_to_path $HOME/.yarn/bin
 __add_folder_to_path $HOME/.cargo/bin
@@ -39,6 +39,7 @@ __add_folder_to_path $HOME/.local/google-cloud-sdk/bin
 
 set -gx MANPATH (manpath -g)
 __add_folder_to_manpath $HOME/.local/man
+__add_folder_to_manpath $CONFIG_PATH/../scripts/man
 
 # Set default editor
 abbr -a v vim
