@@ -108,6 +108,9 @@ end
 
 # Direnv
 type -q direnv; and direnv hook fish | source
+
+# Zoxide
+type -q zoxide; and zoxide init fish | source
 ## }
 
 ## Load per-machine config {
