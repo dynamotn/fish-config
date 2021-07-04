@@ -7,6 +7,8 @@ complete -c rg -n "__fish_use_subcommand" -l context-separator -d 'Set the conte
 complete -c rg -n "__fish_use_subcommand" -l dfa-size-limit -d 'The upper size limit of the regex DFA.'
 complete -c rg -n "__fish_use_subcommand" -s E -l encoding -d 'Specify the text encoding of files to search.'
 complete -c rg -n "__fish_use_subcommand" -l engine -d 'Specify which regexp engine to use.' -r -f -a "default pcre2 auto"
+complete -c rg -n "__fish_use_subcommand" -l field-context-separator -d 'Set the field context separator.'
+complete -c rg -n "__fish_use_subcommand" -l field-match-separator -d 'Set the match separator.'
 complete -c rg -n "__fish_use_subcommand" -s f -l file -d 'Search for patterns from the given file.'
 complete -c rg -n "__fish_use_subcommand" -s g -l glob -d 'Include or exclude files.'
 complete -c rg -n "__fish_use_subcommand" -l iglob -d 'Include or exclude files case insensitively.'
@@ -47,8 +49,8 @@ complete -c rg -n "__fish_use_subcommand" -l debug -d 'Show debug messages.'
 complete -c rg -n "__fish_use_subcommand" -l trace
 complete -c rg -n "__fish_use_subcommand" -l no-encoding
 complete -c rg -n "__fish_use_subcommand" -l files -d 'Print each file that would be searched.'
-complete -c rg -n "__fish_use_subcommand" -s l -l files-with-matches -d 'Only print the paths with at least one match.'
-complete -c rg -n "__fish_use_subcommand" -l files-without-match -d 'Only print the paths that contain zero matches.'
+complete -c rg -n "__fish_use_subcommand" -s l -l files-with-matches -d 'Print the paths with at least one match.'
+complete -c rg -n "__fish_use_subcommand" -l files-without-match -d 'Print the paths that contain zero matches.'
 complete -c rg -n "__fish_use_subcommand" -s F -l fixed-strings -d 'Treat the pattern as a literal string.'
 complete -c rg -n "__fish_use_subcommand" -l no-fixed-strings
 complete -c rg -n "__fish_use_subcommand" -s L -l follow -d 'Follow symbolic links.'
@@ -57,7 +59,7 @@ complete -c rg -n "__fish_use_subcommand" -l glob-case-insensitive -d 'Process a
 complete -c rg -n "__fish_use_subcommand" -l no-glob-case-insensitive
 complete -c rg -n "__fish_use_subcommand" -l heading -d 'Print matches grouped by each file.'
 complete -c rg -n "__fish_use_subcommand" -l no-heading -d 'Don\'t group matches by each file.'
-complete -c rg -n "__fish_use_subcommand" -l hidden -d 'Search hidden files and directories.'
+complete -c rg -n "__fish_use_subcommand" -s . -l hidden -d 'Search hidden files and directories.'
 complete -c rg -n "__fish_use_subcommand" -l no-hidden
 complete -c rg -n "__fish_use_subcommand" -s i -l ignore-case -d 'Case insensitive search.'
 complete -c rg -n "__fish_use_subcommand" -l ignore-file-case-insensitive -d 'Process ignore files case insensitively.'
