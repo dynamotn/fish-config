@@ -9,4 +9,5 @@ alias Gi "gcloud iam"
 alias Gl "gcloud logging"
 
 alias fGpc "__fzf_gcloud_project_change"
-alias fGcis "__fzf_gcloud_instance_search"
+alias fGcis "__fzf_gcloud_instance_ssh"
+alias fGciS "__fzf_gcloud_instance_search"
