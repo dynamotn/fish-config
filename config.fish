@@ -72,10 +72,13 @@ if test -n "$TERM"
   fish_vi_key_bindings
 end
 
-# DIRCOLOR for ls
+# grc for color output
 if type -q grc
-  set -U grcplugin_ls --color -C
+  set -U grcplugin_ls --color -Chl --group-directories-first
+  set -x grcplugin_df -H
 end
+
+# DIRCOLOR for ls
 eval (dircolors -c $CONFIG_PATH/DIRCOLORS 2> /dev/null)
 
 # Color for Virtual console
