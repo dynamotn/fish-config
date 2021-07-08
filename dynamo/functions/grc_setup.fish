@@ -14,7 +14,9 @@ function grc_setup
     if type -q $executable
       function $executable --inherit-variable executable --wraps=$executable
         if isatty 1
-          grc $executable $argv
+          set -l optionsvariable "grcplugin_"$executable
+          set -l options $$optionsvariable
+          grc -es --colour=auto $executable $options $argv
         else
           eval command $executable $argv
         end
