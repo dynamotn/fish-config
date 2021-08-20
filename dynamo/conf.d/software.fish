@@ -73,4 +73,5 @@ function install_pre_commit
   end
 
   type -q pip3; and pip3 install pre-commit
+  type -q asdf; and asdf reshim python
 end
