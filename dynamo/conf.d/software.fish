@@ -43,7 +43,7 @@ function install_terraform
 
   set -l temp (mktemp)
   set -l pwd (pwd)
-  curl -sSL (curl -sSL https://releases.hashicorp.com/terraform/index.json | jq -r '.versions[].builds[].url' | sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n | egrep -v 'rc|beta' | egrep 'linux.*amd64' |tail -1) -o $temp
+  curl -sSL (curl -sSL https://releases.hashicorp.com/terraform/index.json | jq -r '.versions[].builds[].url' | egrep -v 'rc|beta' | egrep 'linux.*amd64' |tail -1) -o $temp
   cd ~/.local/bin; and unzip -qqo $temp
   rm -rf $temp; and cd $pwd
 end
