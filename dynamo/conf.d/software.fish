@@ -66,3 +66,11 @@ end
 function install_nix
   curl -sSL https://nixos.org/nix/install | sh
 end
+
+function install_pre_commit
+  if type -q pre-commit
+    return
+  end
+
+  type -q pip3; and pip3 install pre-commit
+end
