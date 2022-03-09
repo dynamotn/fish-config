@@ -24,3 +24,6 @@ fisher install $SETUP_DIR/dynamo
 # Install fzf
 fish -c "install_fzf"
 fish -c "install_nix"
+
+# Install DIRCOLORS
+curl https://raw.githubusercontent.com/trapd00r/LS_COLORS/master/LS_COLORS -sLo ~/.config/fish/DIRCOLORS
