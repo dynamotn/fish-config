@@ -1,11 +1,19 @@
 function install_gcloud
-  if type -q gcloud; or test -e $HOME/.local/google-cloud-sdk
+  if type -q gcloud; or test -q asdf
     return
   end
 
-  curl -SL https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-318.0.0-linux-x86_64.tar.gz -o /tmp/gcloud-sdk.tar.gz
-  mkdir -p $HOME/.local
-  tar xvzf /tmp/gcloud-sdk.tar.gz -C $HOME/.local; and rm -f /tmp/gcloud-sdk.tar.gz
+  asdf plugin-add gcloud
+  asdf install gcloud latest
+end
+
+function install_awscli
+  if type -q awscli; or test -q asdf
+    return
+  end
+
+  asdf plugin-add awscli
+  asdf install awscli latest
 end
 
 function install_asdf
@@ -18,34 +26,30 @@ function install_asdf
 end
 
 function install_kubectl
-  mkdir -p ~/.local/bin
-  curl -sSL https://storage.googleapis.com/kubernetes-release/release/(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl -o ~/.local/bin/kubectl
-  chmod +x ~/.local/bin/kubectl
+  if type -q kubectl; or test -q asdf
+    return
+  end
+
+  asdf plugin-add kubectl
+  asdf install kubectl latest
 end
 
 function install_helm
-  mkdir -p ~/.local/bin
-  set -l helmver (curl -sSL https://api.github.com/repos/helm/helm/releases/latest | grep -Po "tag_name\": \"(\K.*)(?=\",)")
-  set -l temp (mktemp)
-  curl -sSL "https://get.helm.sh/helm-$helmver-linux-amd64.tar.gz" -o $temp
-  tar xzf $temp linux-amd64/helm
-  mv linux-amd64/helm ~/.local/bin/helm
-  chmod +x ~/.local/bin/helm
-  rm -rf $temp linux-amd64
+  if type -q helm; or test -q asdf
+    return
+  end
+
+  asdf plugin-add helm
+  asdf install helm latest
 end
 
 function install_terraform
-  mkdir -p ~/.local/bin
-  if not type -q jq
-    echo "Please install jq first"
-    return 1
+  if type -q terraform; or test -q asdf
+    return
   end
 
-  set -l temp (mktemp)
-  set -l pwd (pwd)
-  curl -sSL (curl -sSL https://releases.hashicorp.com/terraform/index.json | jq -r '.versions[].builds[].url' | egrep -v 'rc|beta' | egrep 'linux.*amd64' |tail -1) -o $temp
-  cd ~/.local/bin; and unzip -qqo $temp
-  rm -rf $temp; and cd $pwd
+  asdf plugin-add terraform
+  asdf install terraform latest
 end
 
 function install_fzf
