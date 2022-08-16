@@ -34,7 +34,7 @@ complete -c bat -s H -l highlight-line -x -d "<N> Highlight the N-th line with a
 
 complete -c bat -l italic-text -xka "always never" -d "Specify when to use ANSI sequences for italic text (default: never)" -n "not __fish_seen_subcommand_from cache"
 
-complete -c bat -s l -l language -d "Set the language for syntax highlighting" -n "not __fish_seen_subcommand_from cache" -xa "(__bat_autocomplete_languages)" 
+complete -c bat -s l -l language -d "Set the language for syntax highlighting" -n "not __fish_seen_subcommand_from cache" -xa "(__bat_autocomplete_languages)"
 
 complete -c bat -s r -l line-range -x -d "<N:M> Only print the specified range of lines for each file" -n "not __fish_seen_subcommand_from cache"
 
@@ -56,7 +56,7 @@ complete -c bat -s P -d "Disable paging. Alias for '--paging=never'" -n "not __f
 
 complete -c bat -s A -l show-all -d "Show non-printable characters like space/tab/newline" -n "not __fish_seen_subcommand_from cache"
 
-complete -c bat -l style -xka "auto full plain changes header grid numbers" -d "Comma-separated list of style elements or presets to display with file contents" -n "not __fish_seen_subcommand_from cache"
+complete -c bat -l style -xka "default auto full plain changes header header-filename header-filesize grid rule numbers snip" -d "Comma-separated list of style elements or presets to display with file contents" -n "not __fish_seen_subcommand_from cache"
 
 complete -c bat -l tabs -x -d "<T> Set the tab width to T spaces (width of 0 passes tabs through directly)" -n "not __fish_seen_subcommand_from cache"
 
