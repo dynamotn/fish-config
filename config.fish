@@ -35,7 +35,7 @@ __add_folder_to_path $HOME/.fzf/bin
 __add_folder_to_path $HOME/.yarn/bin
 __add_folder_to_path $HOME/.cargo/bin
 __add_folder_to_path $HOME/.go/bin
-__add_folder_to_path $HOME/.local/google-cloud-sdk/bin
+__add_folder_to_path $HOME/.local/share/nvim/mason/bin
 
 set -gx MANPATH (manpath -g)
 __add_folder_to_manpath $HOME/.local/man
