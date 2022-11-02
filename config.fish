@@ -114,6 +114,12 @@ type -q direnv; and direnv hook fish | source
 
 # Zoxide
 type -q zoxide; and zoxide init fish | source
+
+# Projekt
+if type -q projekt
+  projekt init fish | source
+  projekt completion fish | source
+end
 ## }
 
 ## Load per-machine config {
