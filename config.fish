@@ -119,6 +119,8 @@ type -q zoxide; and zoxide init fish | source
 if type -q projekt
   projekt init fish | source
   projekt completion fish | source
+  t completion fish | source
+  b completion fish | source
 end
 ## }
 
