@@ -16,10 +16,15 @@ function ssht
     echo "Must have hostname"
     return 1
   end
+  set -l OLD_TMUX_WINDOW (tmux list-windows -F '#{window_name}#{window_active}' | sed -n 's|^\(.*\)1$|\1|p')
+  test -n $TMUX; and tmux rename-window $server
   if test -z "$session"
     ssh -t $server tmux at; or ssh -t $server tmux new
   else
     ssh -t $server tmux at -t $session; or ssh -t $server tmux new -s $session
+  end
+  if test $status != 0 -a -n $TMUX
+    tmux rename-window $OLD_TMUX_WINDOW
   end
 end
 
