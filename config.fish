@@ -82,8 +82,8 @@ end
 eval (dircolors -c $CONFIG_PATH/DIRCOLORS 2> /dev/null)
 
 # Color for Virtual console
-if test "$TERM" = "linux"
-  for i in (sed -n "s/.*\*color\([0-9]\{1,\}\).*#\([0-9a-fA-F]\{6\}\).*/\1 \2/p" $HOME/.Xresources | awk '$1 < 16 {printf "\\\e]P%X%s", $1, $2}')
+if test "$TERM" = "linux"; and test ~/.HOME/fish/console_color
+  for i in (sed -n "s/.*\*color\([0-9]\{1,\}\).*#\([0-9a-fA-F]\{6\}\).*/\1 \2/p" $HOME/.config/fish/console_color | awk '$1 < 16 {printf "\\\e]P%X%s", $1, $2}')
     echo -en "$i"
   end
   set -g theme_nerd_fonts no
