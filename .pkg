@@ -4,3 +4,4 @@ danhper/fish-ssh-agent
 gitlab.com/dynamo-config/fish-packages/fzf
 gitlab.com/dynamo-config/fish-packages/canaudua
 lilyball/nix-env.fish
+oh-my-fish/plugin-ssh-config.d
