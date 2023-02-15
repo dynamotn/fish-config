@@ -1,3 +1,8 @@
+function ssh
+  __ssh_config_dir
+  and command ssh $argv
+end
+
 # Run tmux when ssh
 function ssht
   getopts $argv | while read -l key value
