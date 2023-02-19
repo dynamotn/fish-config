@@ -12,13 +12,13 @@ for i in (echo $argv | sed "s|--*|\n|g" | grep -v '^$')
 end
 if not functions -q fisher; or eval $UPDATE
   curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
-  patch ~/.config/fish/functions/fisher.fish $SETUP_DIR/.setup/fisher.patch
+  patch ~/.config/fish/functions/fisher.fish $SETUP_DIR/fisher.patch
 end
 
 source ~/.config/fish/functions/fisher.fish
 
 # Install fish package
-fisher install < $SETUP_DIR/.setup/fish_plugins
+fisher install < $SETUP_DIR/fish_plugins
 
 # Install fzf
 fish -c "install_fzf"
