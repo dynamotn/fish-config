@@ -12,7 +12,6 @@ for i in (echo $argv | sed "s|--*|\n|g" | grep -v '^$')
 end
 if not functions -q fisher; or eval $UPDATE
   curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
-  patch ~/.config/fish/functions/fisher.fish $SETUP_DIR/fisher.patch
 end
 
 source ~/.config/fish/functions/fisher.fish
