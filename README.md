@@ -15,7 +15,7 @@ Clone this repository to ~/.config/fish and run setup.fish
 ```
 rm -rf ~/.config/fish
 git clone https://gitlab.com/dynamo-config/fish ~/.config/fish
-~/.config/fish/.setup/setup.fish
+~/.config/fish/setup/setup.fish
 ```
 
 Alias
