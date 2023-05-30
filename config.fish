@@ -37,7 +37,9 @@ __add_folder_to_path $HOME/.cargo/bin
 __add_folder_to_path $HOME/.go/bin
 __add_folder_to_path $HOME/.local/share/nvim/mason/bin
 
-set -gx MANPATH (manpath -g)
+if type -q manpath
+  set -gx MANPATH (manpath -g)
+end
 __add_folder_to_manpath $HOME/.local/man
 __add_folder_to_manpath $CONFIG_PATH/../scripts/man
 
