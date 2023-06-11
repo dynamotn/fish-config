@@ -95,7 +95,12 @@ end
 ## Other tools {
 # Fzf config
 type -q __fzf_setup; and __fzf_setup
-set -U FZF_DEFAULT_OPTS "--color=spinner:#31a354,info:#31a354,hl:#3182bd,hl+:#4596d1,pointer:#f0b474,prompt:#756bb1,header:#756bb1 --cycle --layout=reverse --preview-window=wrap --marker=\"*\" --prompt=\" \" --pointer=\"=>\""
+set -U FZF_DEFAULT_OPTS "\
+--color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
+--color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
+--color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
+--cycle --layout=reverse --preview-window=wrap \
+--marker=\"*\" --prompt=\" \" --pointer=\"=>\""
 set -U FZF_TMUX 1
 if type -q fdfind
   alias fd fdfind
