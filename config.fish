@@ -122,6 +122,9 @@ type -q direnv; and direnv hook fish | source
 # Zoxide
 type -q zoxide; and zoxide init fish | source
 
+# Navi
+type -q navi; and navi widget fish | source
+
 # Projekt
 if type -q projekt
   projekt init fish | source
